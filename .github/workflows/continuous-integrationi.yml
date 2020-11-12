@@ -37,8 +37,5 @@ jobs:
       - name: Run unit test
         run: npm run test
 
-      - name: Update webdriver
-        run: ./node_modules/protractor/bin/webdriver-manager update
-
       - name: Run end to end test
         run: npm run e2e
