@@ -127,5 +127,8 @@
       }
     }
   },
-  "defaultProject": "survey-challenge"
+  "defaultProject": "survey-challenge",
+  "cli": {
+    "analytics": "2413f8e3-60fa-4737-a098-1857cdf403b1"
+  }
 }
