@@ -1,0 +1,44 @@
+// Colors
+$grays: (
+  100: #f9fbfd,
+  200: #eef2f5,
+  300: #e6e9ed,
+  400: #c3c6ce,
+  500: #9ea1ac,
+  600: #747784,
+  700: #4d505b,
+  800: #3b3d47,
+  900: #292a33
+);
+
+$red: #e20041;
+$blue: #0041e2;
+$white: #fff;
+$black: #000;
+
+$primary: $red;
+$secondary: $blue;
+
+$link-color: #007aff;
+
+// Fonts
+$font-sizes: (
+  xl: 2.125rem,           // 34px
+  lg: 1.25rem,            // 20px
+  md: 1.0625rem,          // 17px
+  sm: 0.9375rem,          // 15px
+  xs: 0.8125rem,          // 13px
+  xxs: 0.6875rem          // 11px
+);
+
+$font-weight-normal: 400;
+$font-weight-bold: 800;
+
+$display1-size: 2.5rem;   // 40px
+$display2-size: 1.75rem;  // 28px
+
+$display1-weight: $font-weight-bold;
+$display2-weight: $font-weight-bold;
+
+// Spacing
+$spacer: 1rem;            // 16px
