@@ -5,11 +5,6 @@ on:
     branches:
       - main
       - develop
-
-  pull_request:
-    branches:
-      - main
-      - develop
       - 'chore/**'
       - 'feature/**'
       - 'release/**'
@@ -52,7 +47,7 @@ jobs:
           git remote add production https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_PRODUCTION_APP.git
           git push -f production origin/main:refs/heads/master
 
-      # TODO: change chore/setup-project to develop branch when chore branch merged
+      # TODO: change chore/setup-project to develop branch when chore branch about to merge
       - name: Deploy Staging
         if: github.ref == 'refs/heads/chore/setup-project'
         run: |
