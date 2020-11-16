@@ -5,8 +5,7 @@ on:
     branches:
       - main
       - develop
-      # TODO: remove this branch before merge into develop
-      - chore/setup-project
+
   pull_request:
     branches:
       - main
@@ -15,17 +14,12 @@ on:
       - 'feature/**'
       - 'release/**'
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
   test:
-    # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v1
 
       - name: Install node packages
         run: npm install
