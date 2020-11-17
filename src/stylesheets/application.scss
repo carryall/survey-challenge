@@ -2,17 +2,15 @@
 @import 'variables';
 
 // Dependencies
-@import 'bootstrap/bootstrap';
+@import '~bootstrap/scss/bootstrap';
 
 // Functions
 @import 'functions/sizing';
 
 // Base
-@import 'base/*';
 
 // Layouts
 
 // Components
-@import 'components/*';
 
 // Screens
