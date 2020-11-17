@@ -25,10 +25,10 @@ $white: #fff;
 $black: #000;
 $red: map-get($reds, 'primary');
 $blue: map-get($blues, 'primary');
+$gray: map-get($grays, 500);
 
-$primary: $red;
-$secondary: $blue;
-$background-color: map-get($grays, 'background');
+$primary: $white;
+$secondary: $gray;
 
 $link-color: map-get($blues, 'light');
 
@@ -69,9 +69,14 @@ $input-padding-y: 1rem;       // 16px
 $input-padding-x: 0.75rem;    // 12px
 $input-font-size: map-get($font-sizes, 'md');
 $input-line-height: 1.375;    // 22px
+$input-border-width: 0;
 
 // Buttons
 $btn-border-radius: 0.625rem; // 10px
 $btn-line-height: 1.375;      // 22px
 $btn-padding-y: 1rem;         // 16px
 $btn-padding-x: 5rem;         // 80px
+
+// Body
+$body-bg: map-get($grays, 'background');
+$body-color: $white;
