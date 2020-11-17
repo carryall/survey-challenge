@@ -47,10 +47,9 @@ jobs:
           git remote add production https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_PRODUCTION_APP.git
           git push -f production origin/main:refs/heads/master
 
-      # TODO: change chore/setup-project to develop branch when chore branch about to merge
       - name: Deploy Staging
-        if: github.ref == 'refs/heads/chore/setup-project'
+        if: github.ref == 'refs/heads/chore/develop'
         run: |
           git remote add staging https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_STAGING_APP.git
-          git push -f staging origin/chore/setup-project:refs/heads/master
+          git push -f staging origin/chore/develop:refs/heads/master
 
