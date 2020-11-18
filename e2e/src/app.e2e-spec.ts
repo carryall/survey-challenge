@@ -8,11 +8,6 @@ describe('workspace-project App', () => {
     page = new AppPage();
   });
 
-  xit('should display welcome message', async () => {
-    await page.navigateTo();
-    expect(await page.getTitleText()).toEqual('survey-challenge app is running!');
-  });
-
   afterEach(async () => {
     // Assert that there are no errors emitted from the browser
     const logs = await browser.manage().logs().get(logging.Type.BROWSER);
