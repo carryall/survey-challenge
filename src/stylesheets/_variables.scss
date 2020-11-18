@@ -1,36 +1,25 @@
 // Colors
-$grays: (
-  100: #f9fbfd,
-  200: #eef2f5,
-  300: #e6e9ed,
-  400: #c3c6ce,
-  500: #9ea1ac,
-  600: #747784,
-  700: #4d505b,
-  800: #3b3d47,
-  900: #292a33,
-  backgound: #15151a
+$brand-gray: (
+  100: hsl(210, 50%, 98%),      //#f9fbfd
+  200: hsl(206, 26%, 95%),      //#eef2f5
+  300: hsl(214, 16%, 92%),      //#e6e9ed
+  400: hsl(224, 10%, 79%),      //#c3c6ce
+  500: hsl(227, 8%, 65%),       //#9ea1ac
+  600: hsl(229, 6%, 49%),       //#747784
+  700: hsl(227, 8%, 33%),       //#4d505b
+  800: hsl(230, 9%, 25%),       //#3b3d47
+  900: hsl(234, 11%, 18%),      //#292a33
+  backgound: hsl(240, 11%, 9%)  //#15151a
 );
 
-$reds: (
+$brand-red: (
   primary: #e20041
 );
 
-$blues: (
+$brand-blue: (
   light: #007aff,
   primary: #0041e2
 );
-
-$white: #fff;
-$black: #000;
-$red: map-get($reds, 'primary');
-$blue: map-get($blues, 'primary');
-$gray: map-get($grays, 500);
-
-$primary: $white;
-$secondary: $gray;
-
-$link-color: map-get($blues, 'light');
 
 // Fonts
 $font-sizes: (
@@ -42,41 +31,5 @@ $font-sizes: (
   xxs: 0.6875rem          // 11px
 );
 
-$font-size-base: map-get($font-sizes, 'md');
-$font-size-lg: map-get($font-sizes, 'lg');
-$font-size-sm: map-get($font-sizes, 'sm');
-
 $font-weight-normal: 400;
 $font-weight-bold: 800;
-
-$h2-font-size: map-get($font-sizes, 'xl');
-$headings-font-weight: $font-weight-bold;
-
-$display1-size: 2.5rem;       // 40px
-$display2-size: 1.75rem;      // 28px
-
-$display1-weight: $font-weight-bold;
-$display2-weight: $font-weight-bold;
-
-// Spacing
-$spacer: 1rem;                // 16px
-
-// Form
-$input-bg: rgba($white, 0.18);
-$input-border-radius: 0.75rem;
-$border-radius: 0.75rem;      // 12px
-$input-padding-y: 1rem;       // 16px
-$input-padding-x: 0.75rem;    // 12px
-$input-font-size: map-get($font-sizes, 'md');
-$input-line-height: 1.375;    // 22px
-$input-border-width: 0;
-
-// Buttons
-$btn-border-radius: 0.625rem; // 10px
-$btn-line-height: 1.375;      // 22px
-$btn-padding-y: 1rem;         // 16px
-$btn-padding-x: 5rem;         // 80px
-
-// Body
-$body-bg: map-get($grays, 'background');
-$body-color: $white;
