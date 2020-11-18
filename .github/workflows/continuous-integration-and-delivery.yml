@@ -15,8 +15,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v1
+      - uses: nanasess/setup-chromedriver@master
         with:
-          chromedriver-version: '87.0.4280.66'
+          chromedriver-version: '87.0.4280.20'
 
       - name: Install node packages
         run: npm install
