@@ -16,11 +16,11 @@ jobs:
     steps:
       - uses: actions/checkout@v1
 
-      - name: Install node packages
-        run: npm install
-      
       - name: Update Chrome
         run: sudo apt-get update && sudo apt-get install google-chrome-stable
+
+      - name: Install node packages
+        run: npm install
 
       - name: Run lint
         run: npm run lint
