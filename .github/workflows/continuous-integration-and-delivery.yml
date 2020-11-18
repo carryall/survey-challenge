@@ -15,12 +15,12 @@ jobs:
 
     steps:
       - uses: actions/checkout@v1
-      - uses: nanasess/setup-chromedriver@master
-        with:
-          chromedriver-version: '87.0.4280.20'
 
       - name: Install node packages
         run: npm install
+      
+      - name: Update Chrome
+        run: sudo apt-get update && sudo apt-get install google-chrome-stable
 
       - name: Run lint
         run: npm run lint
