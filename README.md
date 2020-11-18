@@ -27,6 +27,6 @@ Run `npm test` to execute the unit tests via [Karma](https://karma-runner.github
 
 Run `npm e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-## Deployement
+## Deployment
 
 Deployed to Heroku for [staging](https://survey-challenge-staging.herokuapp.com/) and [production](https://survey-challenge-production.herokuapp.com/) release
