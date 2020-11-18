@@ -1,0 +1,15 @@
+@import '../../stylesheets/variables';
+
+.content-wrapper {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.form-login {
+  &__label {
+    font-size: map-get($font-sizes, 'sm');
+    font-weight: $font-weight-bold;
+  }
+}
