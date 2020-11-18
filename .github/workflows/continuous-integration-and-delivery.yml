@@ -15,6 +15,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v1
+        with:
+          chromedriver-version: '86.0.4240.198'
 
       - name: Install node packages
         run: npm install
