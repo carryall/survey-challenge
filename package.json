@@ -9,7 +9,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "heroku-postbuild": "ng build --prod"
+    "heroku-postbuild": "ng build --prod",
+    "stylelint": "stylelint '**/*.scss'"
   },
   "private": true,
   "dependencies": {
@@ -18,12 +19,18 @@
     "@angular/compiler": "11.0.0",
     "@angular/core": "11.0.0",
     "@angular/forms": "11.0.0",
+    "@angular/localize": "11.0.0",
     "@angular/platform-browser": "11.0.0",
     "@angular/platform-browser-dynamic": "11.0.0",
     "@angular/router": "11.0.0",
+    "@ng-bootstrap/ng-bootstrap": "8.0.0",
+    "bootstrap": "4.5.3",
     "express": "4.17.1",
     "path": "0.12.7",
     "rxjs": "6.6.3",
+    "stylelint": "13.7.2",
+    "stylelint-config-standard": "20.0.0",
+    "stylelint-scss": "3.18.0",
     "tslib": "2.0.3",
     "typescript": "4.0.5",
     "webdriver-manager": "12.1.7",
