@@ -53,6 +53,8 @@ $secondary: $gray;
 $link-color: map-get($brand-blue, 'light');
 
 // Fonts
+$font-family-base: 'Neuzeit S LT Std', serif;
+
 $font-size-base: map-get($font-sizes, 'md');
 $font-size-lg: map-get($font-sizes, 'lg');
 $font-size-sm: map-get($font-sizes, 'sm');
@@ -72,18 +74,21 @@ $spacer: 1rem;                // 16px
 // Form
 $input-bg: rgba($white, 0.18);
 $input-border-radius: 0.75rem;
-$border-radius: 0.75rem;      // 12px
-$input-padding-y: 1rem;       // 16px
-$input-padding-x: 0.75rem;    // 12px
+$border-radius: 0.75rem;            // 12px
+$input-padding-y: 1rem;             // 16px
+$input-padding-x: 0.75rem;          // 12px
 $input-font-size: map-get($font-sizes, 'md');
-$input-line-height: 1.375;    // 22px
+$input-line-height: 1.375;          // 22px
 $input-border-width: 0;
+
+$form-group-margin-bottom: 1.5rem;  // 24px
 
 // Buttons
 $btn-border-radius: 0.625rem; // 10px
 $btn-line-height: 1.375;      // 22px
 $btn-padding-y: 1rem;         // 16px
 $btn-padding-x: 5rem;         // 80px
+$btn-font-weight: $font-weight-bold;
 
 // Body
 $body-bg: map-get($grays, 'background');
