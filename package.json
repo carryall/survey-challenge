@@ -29,7 +29,7 @@
     "express": "4.17.1",
     "path": "0.12.7",
     "rxjs": "6.6.3",
-    "svg-icon-sprite": "^1.1.1",
+    "svg-icon-sprite": "1.1.1",
     "tslib": "2.0.3",
     "typescript": "4.0.5",
     "webdriver-manager": "12.1.7",
