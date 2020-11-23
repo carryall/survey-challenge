@@ -6,8 +6,15 @@
     fill: transparent;
   }
 
-  &--emoji,
-  &--emoji svg {
-    fill: unset;
+  &--sm,
+  &--sm svg {
+    width: rem(28px);
+    height: rem(28px);
+  }
+
+  &--lg,
+  &--lg svg {
+    width: rem(64px);
+    height: rem(64px);
   }
 }
