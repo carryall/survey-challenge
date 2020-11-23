@@ -1,0 +1,13 @@
+.icon {
+  &,
+  & svg {
+    width: rem(30px);
+    height: rem(30px);
+    fill: transparent;
+  }
+
+  &--emoji,
+  &--emoji svg {
+    fill: unset;
+  }
+}
