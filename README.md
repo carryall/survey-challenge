@@ -27,6 +27,16 @@ Run `npm test` to execute the unit tests via [Karma](https://karma-runner.github
 
 Run `npm e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
+### SVG icons
+
+This application uses icon sprite located at `assets/images/icon-sprite.svg` which generated from SVG icons in `assets/images/icons`.
+To generate the icon sprite run `npm run generate:sprite`.
+Use `svg-icon` tag with icon name in source path to display the icon from sprite.
+
+```html
+<svg-icon src="assets/images/icon-sprite.svg#<icon-name>" class="icon"></svg-icon>
+```
+
 ## Deployment
 
 Deployed to Heroku for [staging](https://survey-challenge-staging.herokuapp.com/) and [production](https://survey-challenge-production.herokuapp.com/) release

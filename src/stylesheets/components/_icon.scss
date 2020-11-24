@@ -1,0 +1,20 @@
+.icon {
+  &,
+  & svg {
+    width: rem(30px);
+    height: rem(30px);
+    fill: transparent;
+  }
+
+  &--sm,
+  &--sm svg {
+    width: rem(28px);
+    height: rem(28px);
+  }
+
+  &--lg,
+  &--lg svg {
+    width: rem(64px);
+    height: rem(64px);
+  }
+}
