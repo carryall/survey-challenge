@@ -9,7 +9,7 @@ describe('FormLoginComponent', () => {
 
   const SELECTORS = {
     emailField: '.form-login input[type="email"]',
-    passworField: '.form-login input[type="password"]',
+    passwordField: '.form-login input[type="password"]',
     submitButton: '.form-login button[type="submit"]'
   };
 
@@ -33,7 +33,7 @@ describe('FormLoginComponent', () => {
 
   it('should render form', () => {
     expect(baseElement.querySelector(SELECTORS.emailField)).toBeTruthy();
-    expect(baseElement.querySelector(SELECTORS.passworField)).toBeTruthy();
+    expect(baseElement.querySelector(SELECTORS.passwordField)).toBeTruthy();
     expect(baseElement.querySelector(SELECTORS.submitButton)).toBeTruthy();
   });
 });
