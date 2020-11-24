@@ -3,9 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { AuthenticationRoutingModule } from './authentication/authentication-routing.module';
 
-const routes: Routes = [
-  
-];
+const routes: Routes = [];
 
 @NgModule({
   imports: [
