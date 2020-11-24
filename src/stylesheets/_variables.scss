@@ -22,8 +22,6 @@ $brand-blue: (
 );
 
 // Fonts
-$font-family-base: 'Neuzeit S LT Std', serif;
-
 $font-sizes: (
   xl: 2.125rem,           // 34px
   lg: 1.25rem,            // 20px
@@ -85,7 +83,6 @@ $input-padding-x: 0.75rem;          // 12px
 $input-font-size: map-get($font-sizes, 'md');
 $input-line-height: 1.375;          // 22px
 $input-border-width: 0;
-$form-group-margin-bottom: 1.5rem;  // 24px
 
 $form-group-margin-bottom: 1.5rem;  // 24px
 
