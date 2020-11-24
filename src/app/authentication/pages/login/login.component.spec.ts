@@ -26,11 +26,11 @@ describe('LoginComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('creates the component', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should render header', () => {
+  it('renders login page header', () => {
     expect(baseElement.querySelector(SELECTORS.headerLogo).src).toContain('assets/images/logo.svg');
     expect(baseElement.querySelector(SELECTORS.headerTitle).textContent).toContain('Sign in to Nimble');
   });

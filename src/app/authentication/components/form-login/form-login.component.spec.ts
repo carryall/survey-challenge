@@ -27,11 +27,11 @@ describe('FormLoginComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('creates the component', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should render form', () => {
+  it('renders login form', () => {
     expect(baseElement.querySelector(SELECTORS.emailField)).toBeTruthy();
     expect(baseElement.querySelector(SELECTORS.passwordField)).toBeTruthy();
     expect(baseElement.querySelector(SELECTORS.submitButton)).toBeTruthy();
