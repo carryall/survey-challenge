@@ -5,6 +5,7 @@
   margin-top: rem(32px);
 
   &__label {
+    cursor: pointer;
     font-size: map-get($font-sizes, 'sm');
     font-weight: $font-weight-bold;
   }

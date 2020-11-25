@@ -4,8 +4,8 @@
   }
 
   &__subtitle {
-    margin-top: rem(24px);
-    margin-bottom: 0;
     color: map-get($grays, 600);
+    margin-bottom: 0;
+    margin-top: rem(24px);
   }
 }
