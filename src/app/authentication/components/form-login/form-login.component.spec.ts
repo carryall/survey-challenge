@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpClientModule } from '@angular/common/http';
 
 import { FormLoginComponent } from './form-login.component';
 
@@ -15,7 +16,8 @@ describe('FormLoginComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FormLoginComponent ]
+      declarations: [ FormLoginComponent ],
+      imports: [ HttpClientModule ]
     })
     .compileComponents();
   });
