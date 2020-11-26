@@ -1,0 +1,13 @@
+@import 'functions/sizing';
+@import 'variables';
+
+.form-login {
+  margin-top: rem(32px);
+
+  &__label {
+    font-weight: $font-weight-bold;
+    font-size: map-get($font-sizes, 'sm');
+
+    cursor: pointer;
+  }
+}

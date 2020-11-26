@@ -68,11 +68,14 @@ $display2-size: 1.75rem;      // 28px
 $display1-weight: $font-weight-bold;
 $display2-weight: $font-weight-bold;
 
+$input-btn-font-family: $font-family-base;
+
 // Spacing
 $spacer: 1rem;                // 16px
 
 // Form
 $input-bg: rgba($white, 0.18);
+$input-color: $white;
 $input-border-radius: 0.75rem;
 $border-radius: 0.75rem;            // 12px
 $input-padding-y: 1rem;             // 16px

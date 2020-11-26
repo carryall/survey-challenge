@@ -1,19 +1,17 @@
 .icon {
-  &,
-  & svg {
-    width: rem(30px);
-    height: rem(30px);
-    fill: transparent;
-  }
+  display: flex;
+  width: rem(30px);
+  height: rem(30px);
+  padding: rem(3px);
 
-  &--sm,
-  &--sm svg {
+  fill: transparent;
+
+  &--sm {
     width: rem(28px);
     height: rem(28px);
   }
 
-  &--lg,
-  &--lg svg {
+  &--lg {
     width: rem(64px);
     height: rem(64px);
   }

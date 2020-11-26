@@ -1,0 +1,12 @@
+.header {
+  &__logo {
+    height: rem(40px);
+  }
+
+  &__subtitle {
+    margin-top: rem(24px);
+    margin-bottom: 0;
+
+    color: map-get($grays, 600);
+  }
+}
