@@ -9,7 +9,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class FormLoginComponent implements OnInit {
   loginForm: any;
-  errorMessage = null;
+  errorMessage: string = '';
 
   constructor(
     private authenticationService: AuthenticationService
@@ -23,14 +23,17 @@ export class FormLoginComponent implements OnInit {
   }
 
   onSubmit(): void {
-    console.log(this.loginForm.value);
+    this.errorMessage = '';
+
     this.authenticationService.login(this.loginForm.value.email, this.loginForm.value.password).subscribe(
       response => {
+        // TODO: check response and redirect to root path
         console.log('response', response);
       },
       error => {
-        this.errorMessage = error;
-        console.log('error', error);
+        if (error.status == 400) {
+          this.errorMessage = 'Invalid email or password';
+        }
       }
     );
   }

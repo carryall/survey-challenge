@@ -1,4 +1,4 @@
-<div *ngIf="true">
+<div *ngIf="errorMessage != ''">
   <div class="alert alert-dark">
     <svg-icon src="assets/images/icon-sprite.svg#error" class="icon alert__icon"></svg-icon>
     <div class="alert__detail">
@@ -6,7 +6,6 @@
         Error
       </h6>
       <span class="alert__message">
-        Error Message goes here
         {{ errorMessage }}
       </span>
     </div>
