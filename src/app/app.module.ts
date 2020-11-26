@@ -7,6 +7,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AuthenticationModule } from './authentication/authentication.module';
+import { SurveyModule } from './survey/survey.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { AuthenticationModule } from './authentication/authentication.module';
     AppRoutingModule,
     NgbModule,
     HttpClientModule,
-    AuthenticationModule
+    AuthenticationModule,
+    SurveyModule
   ],
   providers: [],
   bootstrap: [AppComponent],
