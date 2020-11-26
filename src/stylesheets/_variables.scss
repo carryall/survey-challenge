@@ -41,8 +41,8 @@ $font-weight-bold: 800;
 // Colors
 $grays: map-merge((), $brand-gray);
 
-$white: #fff;
-$black: #000;
+$white: #ffffff;
+$black: #000000;
 $red: map-get($brand-red, 'primary');
 $blue: map-get($brand-blue, 'primary');
 $gray: map-get($brand-gray, 500);

@@ -1,5 +1,5 @@
 {
-  "extends": "stylelint-config-sass-guidelines",
+  "extends": ["stylelint-config-idiomatic-sass"],
   "plugins": [
     "stylelint-scss"
   ],
