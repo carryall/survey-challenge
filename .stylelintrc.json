@@ -9,6 +9,14 @@
     "at-rule-empty-line-before": null,
     "block-closing-brace-newline-after": null,
     "scss/at-rule-no-unknown": true,
-    "no-empty-source": null
+    "no-empty-source": null,
+    "color-hex-case": "lower",
+    "color-hex-length": "short",
+    "rule-empty-line-before": ["always",
+      {
+        "ignore": ["first-nested"]
+      }
+    ],
+    "string-quotes": "single"
   }
 }
