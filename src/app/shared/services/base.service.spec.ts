@@ -6,7 +6,6 @@ import { BaseService } from './base.service';
 import { HttpErrorResponse } from '@angular/common/http';
 
 describe('BaseService', () => {
-  let injector: TestBed;
   let service: BaseService;
   let httpMock: HttpTestingController;
 
@@ -104,6 +103,34 @@ describe('BaseService', () => {
         });
         request.error(mockError, {status: 400, statusText: 'Bad Request'});
       });
+    });
+
+    it('throws errors when http response with error', () => {
+      const mockResponse = {
+        errors: [{
+          code: "invalid_grant",
+          detail: "The provided authorization grant is invalid, expired, revoked, does not match the redirection URI used in the authorization request, or was issued to another client.",
+          source: "Doorkeeper::OAuth::Error"
+        }]
+      };
+
+      const data = {
+        grant_type: 'password',
+        email: 'invalid_email@nimblehq.co',
+        password: '12345678',
+        client_id: environment.apiClientID,
+        client_secret: environment.apiClientSecret
+      };
+
+      service.post('oauth/token', data).subscribe(() => {},
+      error => {
+        expect(error.status).toBe(400);
+        expect(error.message).toBe(mockResponse.errors[0].detail);
+      });
+
+      const request = httpMock.expectOne(`${environment.apiBaseUrl}/api/${environment.apiVersion}/oauth/token`);
+      expect(request.request.method).toBe('POST');
+      request.flush({message: mockResponse.errors[0].detail}, {status: 400, statusText: ''});
     });
   });
 
