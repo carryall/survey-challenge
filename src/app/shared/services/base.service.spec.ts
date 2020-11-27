@@ -6,6 +6,7 @@ import { BaseService } from './base.service';
 import { HttpErrorResponse } from '@angular/common/http';
 
 describe('BaseService', () => {
+  let injector: TestBed;
   let service: BaseService;
   let httpMock: HttpTestingController;
 
