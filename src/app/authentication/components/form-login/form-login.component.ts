@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../../service/authentication.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { SessionService } from 'src/app/shared/services/session.service';
 
 @Component({
   selector: 'app-form-login',
@@ -12,11 +13,9 @@ export class FormLoginComponent implements OnInit {
   loginForm: any;
   errorMessage = '';
 
-  USER_ACCESS_TOKEN = 'user_access_token';
-  USER_TOKEN_TYPE = 'user_token_type';
-
   constructor(
     private authenticationService: AuthenticationService,
+    private sessionService: SessionService,
     private router: Router
   ) {}
 
@@ -32,8 +31,7 @@ export class FormLoginComponent implements OnInit {
 
     this.authenticationService.login(this.loginForm.value.email, this.loginForm.value.password).subscribe(
       response => {
-        localStorage.setItem(this.USER_ACCESS_TOKEN, response.accessToken);
-        localStorage.setItem(this.USER_TOKEN_TYPE, response.tokenType);
+        this.sessionService.setAccessToken(response.accessToken, response.tokenType);
 
         this.router.navigate(['/']);
       },

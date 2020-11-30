@@ -17,6 +17,14 @@ describe('Login', () => {
       expect(await (await page.getSubmitButton()).getAttribute('disabled')).toBeFalsy();
     });
 
+    it('sets access token to local storage', async () => {
+      await page.navigateTo();
+      await page.LoginWith('dev@nimblehq.co', '12345678');
+
+      expect(localStorage.getItem('USER_ACCESS_TOKEN')).not.toBeNull();
+      expect(localStorage.getItem('USER_TOKEN_TOKEN')).not.toBeNull();
+    });
+
     it('redirects to root url when hit login button', async () => {
       await page.navigateTo();
       await page.LoginWith('dev@nimblehq.co', '12345678');
