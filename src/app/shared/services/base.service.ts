@@ -9,7 +9,8 @@ import { Deserializer } from 'ts-jsonapi';
 @Injectable({
   providedIn: 'root'
 })
-export class BaseService {
+
+export abstract class BaseService {
   DEFAULT_HEADER: object = {
     'Content-Type': 'application/json'
   };
