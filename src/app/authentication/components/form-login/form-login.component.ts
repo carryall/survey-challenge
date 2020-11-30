@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../../service/authentication.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-form-login',
@@ -11,8 +12,12 @@ export class FormLoginComponent implements OnInit {
   loginForm: any;
   errorMessage = '';
 
+  USER_ACCESS_TOKEN = 'user_access_token';
+  USER_TOKEN_TYPE = 'user_token_type';
+
   constructor(
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -27,8 +32,10 @@ export class FormLoginComponent implements OnInit {
 
     this.authenticationService.login(this.loginForm.value.email, this.loginForm.value.password).subscribe(
       response => {
-        // TODO: check response and redirect to root path
-        console.log('response', response);
+        localStorage.setItem(this.USER_ACCESS_TOKEN, response.accessToken);
+        localStorage.setItem(this.USER_TOKEN_TYPE, response.tokenType);
+
+        this.router.navigate(['/']);
       },
       error => {
         if (error.status === 400) {

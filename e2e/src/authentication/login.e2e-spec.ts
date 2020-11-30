@@ -8,49 +8,58 @@ describe('Login', () => {
     page = new LoginPage();
   });
 
-  it('disables form submit button when email and password are blank', async () => {
-    await page.navigateTo();
+  describe('Given valid credential', () => {
+    it('enables form submit button', async () => {
+      await page.navigateTo();
+      await page.fillEmail('email@nimblehq.co');
+      await page.fillPassword('password');
 
-    expect(await (await page.getSubmitButton()).getAttribute('disabled')).toBeTruthy();
+      expect(await (await page.getSubmitButton()).getAttribute('disabled')).toBeFalsy();
+    });
+
+    it('redirects to root url when hit login button', async () => {
+      await page.navigateTo();
+      await page.LoginWith('dev@nimblehq.co', '12345678');
+
+      browser.waitForAngular();
+      browser.wait(() => {
+        return until.urlIs('/');
+      }, 2000);
+    });
   });
 
-  it('disables form submit button when email is not in correct format', async () => {
-    await page.navigateTo();
-    await page.fillEmail('email with wrong format');
-    await page.fillPassword('password');
+  describe('Given email and password are blank', () => {
+    it('disables form submit button', async () => {
+      await page.navigateTo();
 
-    expect(await (await page.getSubmitButton()).getAttribute('disabled')).toBeTruthy();
+      expect(await (await page.getSubmitButton()).getAttribute('disabled')).toBeTruthy();
+    });
   });
 
-  it('enables form submit button when email and password are NOT blank', async () => {
-    await page.navigateTo();
-    await page.fillEmail('email@nimblehq.co');
-    await page.fillPassword('password');
+  describe('Given email is NOT in correct format', () => {
+    it('disables form submit button', async () => {
+      await page.navigateTo();
+      await page.fillEmail('email with wrong format');
+      await page.fillPassword('password');
 
-    expect(await (await page.getSubmitButton()).getAttribute('disabled')).toBeFalsy();
+      expect(await (await page.getSubmitButton()).getAttribute('disabled')).toBeTruthy();
+    });
   });
 
-  it('redirects to root url when login with valid credential', async () => {
-    await page.navigateTo();
-    await page.LoginWith('dev@nimblehq.co', '12345678');
+  describe('Given INVALID credential', () => {
+    it('displays error message', async () => {
+      await page.navigateTo();
+      await page.LoginWith('invalid-email@nimblehq.co', '12345678');
 
-    browser.waitForAngular();
-    browser.wait(() => {
-      return until.urlIs('/');
-    }, 2000);
-  });
-
-  it('displays error message when login with INVALID credential', async () => {
-    await page.navigateTo();
-    await page.LoginWith('invalid-email@nimblehq.co', '12345678');
-
-    browser.waitForAngular();
-    browser.wait(() => {
-      return until.elementIsVisible(page.getAlert());
-    }, 2000);
-    browser.wait(() => {
-      return until.elementTextIs(page.getAlert(), 'Invalid email or password');
-    }, 2000);
+      browser.waitForAngular();
+      browser.wait(() => {
+        return until.elementIsVisible(page.getAlert());
+      }, 2000).then(() => {
+        browser.wait(() => {
+          return until.elementTextIs(page.getAlert(), 'Invalid email or password');
+        }, 2000);
+      });
+    });
   });
 
   afterEach(async () => {
