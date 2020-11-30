@@ -39,8 +39,17 @@ describe('AuthenticationService', () => {
           }
         };
 
+        const deserializedResponse = {
+          id: 10,
+          accessToken: 'lbxD2K2BjbYtNzz8xjvh2FvSKx838KBCf79q773kq2c',
+          tokenType: 'Bearer',
+          expiresIn: 7200,
+          refreshToken: '3zJz2oW0njxlj_I3ghyUBF7ZfdQKYXd2n0ODlMkAjHc',
+          createdAt: 1597169495
+        };
+
         service.login('dev@nimblehq.co', '12345678').subscribe(response => {
-          expect(response).toBe(mockResponse);
+          expect(response).toEqual(deserializedResponse);
         });
 
         const request = httpMock.expectOne(`${environment.apiBaseUrl}/api/${environment.apiVersion}/oauth/token`);
@@ -55,13 +64,13 @@ describe('AuthenticationService', () => {
           _ => fail('Should have failed with 400 error'),
           (error: HttpErrorResponse) => {
             expect(error.status).toBe(400);
-            expect(error.error).toContain('400 Unprocessable Entity');
+            expect(error.message).toContain('400');
           }
         );
 
         const request = httpMock.expectOne(`${environment.apiBaseUrl}/api/${environment.apiVersion}/oauth/token`);
         expect(request.request.method).toBe('POST');
-        request.error(new ErrorEvent('HttpError'), { status: 400, statusText: 'Unprocessable Entity' });
+        request.error(new ErrorEvent('HttpErrorResponse'), { status: 400, statusText: 'Unprocessable Entity' });
       });
     });
   });
