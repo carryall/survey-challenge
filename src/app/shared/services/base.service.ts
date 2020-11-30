@@ -3,6 +3,8 @@ import { Observable, throwError } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError, retry } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
+import { Deserializer } from 'ts-jsonapi';
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +14,12 @@ export class BaseService {
     'Content-Type': 'application/json'
   };
 
-  constructor(
-    private http: HttpClient) {
+  deserializer: Deserializer;
+
+  constructor(private http: HttpClient) {
+    this.deserializer = new Deserializer({
+      keyForAttribute: 'camelCase'
+    });
   }
 
   post(endpoint: string, body: {}): Observable<any> {
@@ -21,7 +27,8 @@ export class BaseService {
 
     return this.http.post(apiUrl, body).pipe(
       retry(1),
-      catchError(this.handleError));
+      catchError(this.handleError),
+      map(response => this.deserialize(response)));
   }
 
   protected handleError(error: any): Observable<any> {
@@ -46,5 +53,13 @@ export class BaseService {
 
   protected apiUrlFor(endpoint: string): string {
     return `${environment.apiBaseUrl}/api/${environment.apiVersion}/${endpoint}`;
+  }
+
+  protected deserialize(data: any): Observable<any> {
+    try {
+      return this.deserializer.deserialize(data);
+    } catch {
+      return data;
+    }
   }
 }

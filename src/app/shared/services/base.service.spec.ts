@@ -40,6 +40,15 @@ describe('BaseService', () => {
           }
         };
 
+        const deserializedResponse = {
+          id: 10,
+          accessToken: 'lbxD2K2BjbYtNzz8xjvh2FvSKx838KBCf79q773kq2c',
+          tokenType: 'Bearer',
+          expiresIn: 7200,
+          refreshToken: '3zJz2oW0njxlj_I3ghyUBF7ZfdQKYXd2n0ODlMkAjHc',
+          createdAt: 1597169495
+        };
+
         const data = {
           grant_type: 'password',
           email: 'dev@nimblehq.co',
@@ -49,7 +58,7 @@ describe('BaseService', () => {
         };
 
         service.post('oauth/token', data).subscribe(response => {
-          expect(response).toBe(mockResponse);
+          expect(response).toEqual(deserializedResponse);
         });
 
         const request = httpMock.expectOne(`${environment.apiBaseUrl}/api/${environment.apiVersion}/oauth/token`);
