@@ -13,44 +13,26 @@ export class BaseService {
     'Content-Type': 'application/json'
   };
 
-  DEFAULT_AUTH_HEADER = {
-    ...this.DEFAULT_HEADER,
-    Authorization: `TOKEN_TYPE ACCESS_TOKEN`
-    // Authorization: `${user_token_type} ${user_access_token}`
-  }
+  USER_TOKEN_TYPE = 'authorization_type';
+  USER_ACCESS_TOKEN = 'authorization_token';
 
   constructor(
     private http: HttpClient,
     private router: Router) {
   }
 
-  get(endpoint: string, params?: {}, headers?: {}, authenitcate?: true): Observable<any> {
+  post(endpoint: string, body: {}): Observable<any> {
     const apiUrl = this.apiUrlFor(endpoint);
-    const defaultHeader = authenitcate ? this.DEFAULT_AUTH_HEADER : this.DEFAULT_HEADER;
-    const options = {
-      params,
-      headers: {...defaultHeader, ...headers}
-    };
 
-    return this.http.get(apiUrl, options).pipe(catchError(this.handleError));
-  }
-
-  post(endpoint: string, body: {}, headers?: {}, authenitcate?: true): Observable<any> {
-    const apiUrl = this.apiUrlFor(endpoint);
-    const defaultHeader = authenitcate ? this.DEFAULT_AUTH_HEADER : this.DEFAULT_HEADER;
-    const options = {
-      headers: {...defaultHeader, ...headers}
-    };
-
-    return this.http.post(apiUrl, body, options).pipe(catchError(this.handleError));
+    return this.http.post(apiUrl, body).pipe(
+      retry(1),
+      catchError(this.handleError));
   }
 
   protected handleError(error: any): Observable<any> {
     let errorMessage = '';
-    console.log('error', error);
     if (error.error instanceof ErrorEvent) {
       // Get client-side error
-      // error = error.error;
       errorMessage = error.error.message;
     } else {
       // Get server-side error
