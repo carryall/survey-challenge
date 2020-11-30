@@ -24,7 +24,7 @@ describe('BaseService', () => {
   });
 
   describe('#post', () => {
-    describe('Given a valid credential', () => {
+    describe('Given a valid data', () => {
       it('returns an Observable<any>', () => {
         const mockResponse = {
           data: {
@@ -58,7 +58,7 @@ describe('BaseService', () => {
       });
     });
 
-    describe('Given an INVALID credential', () => {
+    describe('Given an INVALID data', () => {
       it('throws error', () => {
         const data = {
           grant_type: 'password',
@@ -78,7 +78,7 @@ describe('BaseService', () => {
 
         const request = httpMock.expectOne(`${environment.apiBaseUrl}/api/${environment.apiVersion}/oauth/token`);
         expect(request.request.method).toBe('POST');
-        request.error({} as any, { status: 400, statusText: 'Unprocessable Entity' });
+        request.error(new ErrorEvent('HttpError'), { status: 400, statusText: 'Unprocessable Entity' });
       });
     });
   });
