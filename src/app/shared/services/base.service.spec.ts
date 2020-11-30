@@ -1,6 +1,5 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { RouterTestingModule } from '@angular/router/testing';
 
 import { environment } from '../../../environments/environment';
 import { BaseService } from './base.service';
@@ -13,8 +12,7 @@ describe('BaseService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
-        HttpClientTestingModule,
-        RouterTestingModule
+        HttpClientTestingModule
       ]
     });
     service = TestBed.inject(BaseService);

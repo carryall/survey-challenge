@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Router } from '@angular/router';
 import { catchError, retry } from 'rxjs/operators';
 
 @Injectable({
@@ -13,12 +12,8 @@ export class BaseService {
     'Content-Type': 'application/json'
   };
 
-  USER_TOKEN_TYPE = 'authorization_type';
-  USER_ACCESS_TOKEN = 'authorization_token';
-
   constructor(
-    private http: HttpClient,
-    private router: Router) {
+    private http: HttpClient) {
   }
 
   post(endpoint: string, body: {}): Observable<any> {
@@ -37,9 +32,8 @@ export class BaseService {
     } else {
       // Get server-side error
       errorMessage = error.message;
-      if (error.status === 401) {
-        this.router.navigate(['/login']);
-      }
+
+      // TODO: redirect to login page if error status is 401
     }
 
     const httpError = new HttpErrorResponse({
