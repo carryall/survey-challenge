@@ -24,7 +24,7 @@ export class LoginPage extends AppPage {
     element(by.buttonText('Sign in')).click();
   }
 
-  async getSubmitButton(): Promise<WebElement> {
+  getSubmitButton(): WebElement {
     return element(by.buttonText('Sign in')).getWebElement();
   }
 

@@ -13,7 +13,7 @@ export class AppComponent {
 
   constructor(authService: AuthService, router: Router) {
     if (!authService.isLoggedIn()) {
-      router.navigate(['login']);
+      router.navigate(['/login']);
     }
   }
 }
