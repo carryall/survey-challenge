@@ -3,11 +3,11 @@ import { SurveyRoutingModule } from './survey-routing.module';
 import { SurveyListComponent } from './pages';
 
 @NgModule({
-  declarations: [
-    SurveyListComponent
-  ],
   imports: [
     SurveyRoutingModule,
+  ],
+  declarations: [
+    SurveyListComponent
   ],
   providers: [],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

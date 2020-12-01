@@ -15,11 +15,13 @@ import { SurveyModule } from './survey/survey.module';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     NgbModule,
     HttpClientModule,
+
     AuthenticationModule,
-    SurveyModule
+    SurveyModule,
+
+    AppRoutingModule, // keep app routing module latest to put the default and wildcard routes last
   ],
   providers: [],
   bootstrap: [AppComponent],

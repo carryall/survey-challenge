@@ -8,14 +8,14 @@ import { FormLoginComponent } from './components/form-login/form-login.component
 import { AuthenticationService } from './service/authentication.service';
 
 @NgModule({
-  declarations: [
-    LoginComponent,
-    FormLoginComponent
-  ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     AuthenticationRoutingModule
+  ],
+  declarations: [
+    LoginComponent,
+    FormLoginComponent
   ],
   providers: [AuthenticationService],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 import 'svg-icon-sprite';
-import { AuthService } from './shared/services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -11,9 +9,5 @@ import { AuthService } from './shared/services/auth.service';
 export class AppComponent {
   title = 'survey-challenge';
 
-  constructor(authService: AuthService, router: Router) {
-    if (!authService.isLoggedIn()) {
-      router.navigate(['/login']);
-    }
-  }
+  constructor() { }
 }
