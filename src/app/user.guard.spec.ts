@@ -30,15 +30,15 @@ describe('UserGuard', () => {
         spyOn(authService, 'isLoggedIn').and.returnValue(true);
 
         expect(guard.canActivate(routeMock, routeStateMock)).toBeTruthy();
-      })
+      });
     });
 
     describe('Given a non-logged in user', () => {
-      it('returns url tree', () => {
+      it('returns a url tree', () => {
         spyOn(authService, 'isLoggedIn').and.returnValue(false);
 
         expect(guard.canActivate(routeMock, routeStateMock)).toBeInstanceOf(UrlTree);
-      })
+      });
     });
   });
 });
