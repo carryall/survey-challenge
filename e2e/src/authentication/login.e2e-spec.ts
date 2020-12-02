@@ -21,7 +21,6 @@ describe('Login', () => {
       await page.navigateTo();
       await page.LoginWith('dev@nimblehq.co', '12345678');
 
-      browser.waitForAngular();
       browser.wait(() => {
         return until.urlIs('/');
       });
