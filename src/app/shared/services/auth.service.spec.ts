@@ -18,7 +18,7 @@ describe('AuthService', () => {
   });
 
   describe('#setAccessToken', () => {
-    it('sets access token and token type to local storage', () => {
+    it('saves access token and token type to local storage', () => {
       service.setAccessToken('access_token', 'token_type');
 
       expect(localStorage.getItem(service.USER_ACCESS_TOKEN)).toBe('access_token');

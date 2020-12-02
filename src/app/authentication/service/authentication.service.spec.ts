@@ -59,9 +59,9 @@ describe('AuthenticationService', () => {
     });
 
     describe('Given INVALID email and password', () => {
-      it('throws error', () => {
+      it('throws an error', () => {
         service.login('invalid_email@nimblehq.co', 'invalid_password').subscribe(
-          _ => fail('Should have failed with 400 error'),
+          _ => fail('It should have failed with 400 error'),
           (error: HttpErrorResponse) => {
             expect(error.status).toBe(400);
             expect(error.message).toContain('400');

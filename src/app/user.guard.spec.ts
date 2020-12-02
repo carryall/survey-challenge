@@ -20,12 +20,12 @@ describe('UserGuard', () => {
     guard = TestBed.inject(UserGuard);
   });
 
-  it('should be created', () => {
+  it('creates the guard', () => {
     expect(guard).toBeTruthy();
   });
 
   describe('#canActivate', () => {
-    describe('Given a logged in user', () => {
+    describe('Given the user is logged in', () => {
       it('returns true', () => {
         spyOn(authService, 'isLoggedIn').and.returnValue(true);
 
@@ -33,7 +33,7 @@ describe('UserGuard', () => {
       });
     });
 
-    describe('Given a non-logged in user', () => {
+    describe('Given the user is NOT logged in', () => {
       it('returns a url tree', () => {
         spyOn(authService, 'isLoggedIn').and.returnValue(false);
 

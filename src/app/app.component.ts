@@ -8,6 +8,4 @@ import 'svg-icon-sprite';
 })
 export class AppComponent {
   title = 'survey-challenge';
-
-  constructor() { }
 }
