@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { environment } from '@environment/environment';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 import { map } from 'rxjs/operators';
 import { Deserializer } from 'ts-jsonapi';
@@ -10,7 +10,7 @@ import { Deserializer } from 'ts-jsonapi';
   providedIn: 'root'
 })
 export abstract class BaseService {
-  DEFAULT_HEADER: object = {
+  DEFAULT_HEADER: { [key: string]: string; } = {
     'Content-Type': 'application/json'
   };
 
@@ -24,8 +24,11 @@ export abstract class BaseService {
 
   post(endpoint: string, payload: {}): Observable<any> {
     const apiUrl = this.apiUrlFor(endpoint);
+    const requestOptions = {
+      headers: new HttpHeaders(this.DEFAULT_HEADER)
+    }
 
-    return this.http.post(apiUrl, payload).pipe(
+    return this.http.post(apiUrl, payload, requestOptions).pipe(
       catchError(this.handleError),
       map(response => this.deserialize(response)));
   }
