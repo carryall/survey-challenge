@@ -26,7 +26,7 @@ export abstract class BaseService {
     const apiUrl = this.apiUrlFor(endpoint);
     const requestOptions = {
       headers: new HttpHeaders(this.DEFAULT_HEADER)
-    }
+    };
 
     return this.http.post(apiUrl, payload, requestOptions).pipe(
       catchError(this.handleError),
