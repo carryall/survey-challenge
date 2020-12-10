@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { CurrentUserGuard } from '../shared/guards/current-user.guard';
+import { CurrentUserGuard } from '@guard/current-user.guard';
 
 import { SurveyListComponent } from './pages';
 

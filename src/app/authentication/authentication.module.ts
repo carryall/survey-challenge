@@ -5,7 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AuthenticationRoutingModule } from './authentication-routing.module';
 import { LoginComponent } from './pages';
 import { FormLoginComponent } from './components/form-login/form-login.component';
-import { AuthenticationService } from './service/authentication.service';
+import { AuthenticationService } from './services/authentication.service';
 
 @NgModule({
   imports: [
