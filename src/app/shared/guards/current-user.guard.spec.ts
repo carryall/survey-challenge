@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
-import { ActivatedRouteSnapshot, Router, UrlTree } from '@angular/router';
+import { UrlTree } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
-import { AuthService } from './shared/services/auth.service';
+import { AuthService } from '../services/auth.service';
 
-import { UserGuard } from './user.guard';
+import { CurrentUserGuard } from './current-user.guard';
 
-describe('UserGuard', () => {
-  let guard: UserGuard;
+describe('CurrentUserGuard', () => {
+  let guard: CurrentUserGuard;
   let authService: AuthService;
 
   const routeMock: any = { snapshot: {}};
@@ -17,7 +17,7 @@ describe('UserGuard', () => {
       imports: [RouterTestingModule]
     });
     authService = TestBed.inject(AuthService);
-    guard = TestBed.inject(UserGuard);
+    guard = TestBed.inject(CurrentUserGuard);
   });
 
   it('creates the guard', () => {

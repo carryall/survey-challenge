@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { UserGuard } from '../user.guard';
+import { CurrentUserGuard } from '../shared/guards/current-user.guard';
 
 import { SurveyListComponent } from './pages';
 
@@ -8,7 +8,7 @@ const routes: Routes = [
   {
     path: '',
     component: SurveyListComponent,
-    canActivate: [UserGuard]
+    canActivate: [CurrentUserGuard]
   }
 ];
 

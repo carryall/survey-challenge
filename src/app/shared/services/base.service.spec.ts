@@ -4,7 +4,6 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { BaseService } from './base.service';
 
-
 describe('BaseService', () => {
   let service: BaseService;
   let httpMock: HttpTestingController;
