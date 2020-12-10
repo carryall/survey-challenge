@@ -24,7 +24,7 @@ describe('BaseService', () => {
   });
 
   describe('#post', () => {
-    describe('Given a valid data', () => {
+    describe('Given a valid request payload', () => {
       it('returns an Observable<any>', () => {
         const mockResponse = {
           data: {
@@ -49,7 +49,7 @@ describe('BaseService', () => {
           createdAt: 1597169495
         };
 
-        const data = {
+        const postRequestPayload = {
           grant_type: 'password',
           email: 'dev@nimblehq.co',
           password: '12345678',
@@ -57,19 +57,30 @@ describe('BaseService', () => {
           client_secret: environment.apiClientSecret
         };
 
-        service.post('oauth/token', data).subscribe(response => {
+        service.post('oauth/token', postRequestPayload).subscribe(response => {
           expect(response).toEqual(deserializedResponse);
         });
 
         const request = httpMock.expectOne(`${environment.apiBaseUrl}/api/${environment.apiVersion}/oauth/token`);
         expect(request.request.method).toBe('POST');
         request.flush(mockResponse);
+        httpMock.verify();
       });
     });
 
-    describe('Given an INVALID data', () => {
-      it('throws error', () => {
-        const data = {
+    describe('Given an INVALID request payload', () => {
+      it('throws an error', () => {
+        const mockErrorResponse = {
+          errors: [
+            {
+              source: "Doorkeeper::OAuth::Error",
+              detail: "The provided authorization grant is invalid, expired, revoked, does not match the redirection URI used in the authorization request, or was issued to another client.",
+              code: "invalid_grant"
+            }
+          ]
+        };
+
+        const postRequestPayload = {
           grant_type: 'password',
           email: 'invalid_email@nimblehq.co',
           password: '12345678',
@@ -77,18 +88,26 @@ describe('BaseService', () => {
           client_secret: environment.apiClientSecret
         };
 
-        service.post('oauth/token', data).subscribe(
+        service.post('oauth/token', postRequestPayload).subscribe(
           _ => fail('Should have failed with 400 error'),
           (error: HttpErrorResponse) => {
             expect(error.status).toBe(400);
-            expect(error.error).toContain('400 Unprocessable Entity');
+            expect(error.error.message).toBe('Unprocessable Entity');
           }
         );
 
         const request = httpMock.expectOne(`${environment.apiBaseUrl}/api/${environment.apiVersion}/oauth/token`);
         expect(request.request.method).toBe('POST');
-        request.error(new ErrorEvent('HttpError'), { status: 400, statusText: 'Unprocessable Entity' });
+
+        const mockError = new ErrorEvent('HttpError', {
+          error: mockErrorResponse,
+        });
+        request.error(mockError, {status: 400, statusText: 'Bad Request'});
       });
     });
+  });
+
+  afterEach(() => {
+    httpMock.verify();
   });
 });

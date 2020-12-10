@@ -23,16 +23,15 @@ export abstract class BaseService {
     });
   }
 
-  post(endpoint: string, body: {}): Observable<any> {
+  post(endpoint: string, payload: {}): Observable<any> {
     const apiUrl = this.apiUrlFor(endpoint);
 
-    return this.http.post(apiUrl, body).pipe(
-      retry(1),
+    return this.http.post(apiUrl, payload).pipe(
       catchError(this.handleError),
       map(response => this.deserialize(response)));
   }
 
-  protected handleError(error: any): Observable<any> {
+  private handleError(error: any): Observable<any> {
     let errorMessage = '';
     if (error.error instanceof ErrorEvent) {
       // Get client-side error
@@ -52,11 +51,11 @@ export abstract class BaseService {
     return throwError(httpError);
   }
 
-  protected apiUrlFor(endpoint: string): string {
+  private apiUrlFor(endpoint: string): string {
     return `${environment.apiBaseUrl}/api/${environment.apiVersion}/${endpoint}`;
   }
 
-  protected deserialize(data: any): Observable<any> {
+  private deserialize(data: any): Observable<any> {
     try {
       return this.deserializer.deserialize(data);
     } catch {
