@@ -34,7 +34,7 @@ describe('UserGuard', () => {
     });
 
     describe('Given the user is NOT logged in', () => {
-      it('returns a url tree', () => {
+      it('returns an url tree', () => {
         spyOn(authService, 'isLoggedIn').and.returnValue(false);
 
         expect(guard.canActivate(routeMock, routeStateMock)).toBeInstanceOf(UrlTree);

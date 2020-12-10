@@ -60,6 +60,16 @@ describe('AuthenticationService', () => {
 
     describe('Given INVALID email and password', () => {
       it('throws an error', () => {
+        const mockErrorResponse = {
+          errors: [
+            {
+              source: 'Doorkeeper::OAuth::Error',
+              detail: 'The provided authorization grant is invalid, expired, revoked, does not match the redirection URI used in the authorization request, or was issued to another client.',
+              code: 'invalid_grant'
+            }
+          ]
+        };
+
         service.login('invalid_email@nimblehq.co', 'invalid_password').subscribe(
           _ => fail('It should have failed with 400 error'),
           (error: HttpErrorResponse) => {
@@ -70,8 +80,16 @@ describe('AuthenticationService', () => {
 
         const request = httpMock.expectOne(`${environment.apiBaseUrl}/api/${environment.apiVersion}/oauth/token`);
         expect(request.request.method).toBe('POST');
-        request.error(new ErrorEvent('HttpErrorResponse'), { status: 400, statusText: 'Unprocessable Entity' });
+
+        const mockError = new ErrorEvent('HttpError', {
+          error: mockErrorResponse
+        });
+        request.error(mockError, {status: 400, statusText: 'Bad Request'});
       });
     });
+  });
+
+  afterEach(() => {
+    httpMock.verify();
   });
 });

@@ -19,7 +19,7 @@ describe('SurveyListComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('creates the component', () => {
     expect(component).toBeTruthy();
   });
 });

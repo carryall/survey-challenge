@@ -21,7 +21,8 @@ import { SurveyModule } from './survey/survey.module';
     AuthenticationModule,
     SurveyModule,
 
-    AppRoutingModule, // keep app routing module latest to put the default and wildcard routes last
+    // Keep app routing module latest to put the default and wildcard routes last
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
