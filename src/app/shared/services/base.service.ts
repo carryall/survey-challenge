@@ -38,16 +38,16 @@ export abstract class BaseService {
       errorMessage = error.error.message;
     } else {
       // Get server-side error
-      errorMessage = error.message;
+      errorMessage = error.statusText;
 
       // TODO: redirect to login page if error status is 401
     }
 
     const httpError = new HttpErrorResponse({
       error: errorMessage,
-      status: error.status,
-      statusText: ''
+      status: error.status
     });
+
     return throwError(httpError);
   }
 
