@@ -11,8 +11,8 @@ describe('AuthenticationService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [ HttpClientTestingModule ],
-      providers: [ AuthenticationService ]
+      imports: [HttpClientTestingModule],
+      providers: [AuthenticationService]
     });
     service = TestBed.inject(AuthenticationService);
     httpMock = TestBed.inject(HttpTestingController);
