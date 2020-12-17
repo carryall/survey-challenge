@@ -20,5 +20,4 @@ import { AuthenticationService } from './services/authentication.service';
   providers: [AuthenticationService],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-
 export class AuthenticationModule { }
