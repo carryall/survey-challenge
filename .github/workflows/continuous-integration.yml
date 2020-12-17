@@ -1,0 +1,29 @@
+name: Test
+
+on:
+  push:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2.3.4
+
+      - name: Update Chrome
+        run: sudo apt-get update && sudo apt-get install google-chrome-stable
+
+      - name: Install node packages
+        run: npm install
+
+      - name: Run lint
+        run: npm run lint
+      
+      - name: Run stylelint
+        run: npm run stylelint
+
+      - name: Run unit test
+        run: npm run test
+
+      - name: Run end to end test
+        run: npm run e2e
