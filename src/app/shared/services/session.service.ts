@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
+export class SessionService {
   USER_ACCESS_TOKEN = 'user_access_token';
   USER_TOKEN_TYPE = 'user_token_type';
 

@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 import { UrlTree } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
-import { AuthService } from '@service/auth.service';
+import { SessionService } from '@service/session.service';
 
 import { CurrentUserGuard } from './current-user.guard';
 
 describe('CurrentUserGuard', () => {
   let guard: CurrentUserGuard;
-  let authService: AuthService;
+  let sessionService: SessionService;
 
   const routeMock: any = { snapshot: {}};
   const routeStateMock: any = { snapshot: {}, url: '/'};
@@ -16,7 +16,7 @@ describe('CurrentUserGuard', () => {
     TestBed.configureTestingModule({
       imports: [RouterTestingModule]
     });
-    authService = TestBed.inject(AuthService);
+    sessionService = TestBed.inject(SessionService);
     guard = TestBed.inject(CurrentUserGuard);
   });
 
@@ -27,7 +27,7 @@ describe('CurrentUserGuard', () => {
   describe('#canActivate', () => {
     describe('Given the user is logged in', () => {
       it('returns true', () => {
-        spyOn(authService, 'isLoggedIn').and.returnValue(true);
+        spyOn(sessionService, 'isLoggedIn').and.returnValue(true);
 
         expect(guard.canActivate(routeMock, routeStateMock)).toBeTruthy();
       });
@@ -35,7 +35,7 @@ describe('CurrentUserGuard', () => {
 
     describe('Given the user is NOT logged in', () => {
       it('returns an url tree', () => {
-        spyOn(authService, 'isLoggedIn').and.returnValue(false);
+        spyOn(sessionService, 'isLoggedIn').and.returnValue(false);
 
         expect(guard.canActivate(routeMock, routeStateMock)).toBeInstanceOf(UrlTree);
       });

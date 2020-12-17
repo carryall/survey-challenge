@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../../services/authentication.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from '@service/auth.service';
+import { SessionService } from '@service/session.service';
 
 @Component({
   selector: 'app-form-login',
@@ -19,10 +19,10 @@ export class FormLoginComponent implements OnInit {
 
   constructor(
     private authenticationService: AuthenticationService,
-    private authService: AuthService,
+    private sessionService: SessionService,
     private router: Router
   ) {
-    if (authService.isLoggedIn()) {
+    if (sessionService.isLoggedIn()) {
       router.navigate(['/']);
     }
   }
@@ -39,7 +39,7 @@ export class FormLoginComponent implements OnInit {
 
     this.authenticationService.login(this.loginForm.value.email, this.loginForm.value.password).subscribe(
       response => {
-        this.authService.setAccessToken(response.accessToken, response.tokenType);
+        this.sessionService.setAccessToken(response.accessToken, response.tokenType);
 
         this.router.navigate(['/']);
       },
