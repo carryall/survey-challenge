@@ -1,0 +1,25 @@
+.alert {
+  display: flex;
+  margin-top: rem(24px);
+
+  &__detail {
+    margin-left: rem(16px);
+  }
+
+  &__heading {
+    font-weight: $font-weight-bold;
+    font-size: map-get($font-sizes, 'sm');
+    line-height: rem(20px);
+  }
+
+  &__message {
+    color: map-get($brand-gray, 600);
+    font-size: map-get($font-sizes, 'xs');
+    line-height: rem(18px);
+  }
+}
+
+.alert--dark {
+  background-color: $dark;
+  color: $white;
+}

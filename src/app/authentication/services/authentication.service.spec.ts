@@ -1,20 +1,20 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { HttpErrorResponse } from '@angular/common/http';
 import { environment } from '@environment/environment';
-import { BaseService } from './base.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
-describe('BaseService', () => {
-  let service: BaseService;
+import { AuthenticationService } from './authentication.service';
+
+describe('AuthenticationService', () => {
+  let service: AuthenticationService;
   let httpMock: HttpTestingController;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [
-        HttpClientTestingModule
-      ]
+      imports: [HttpClientTestingModule],
+      providers: [AuthenticationService]
     });
-    service = TestBed.inject(BaseService);
+    service = TestBed.inject(AuthenticationService);
     httpMock = TestBed.inject(HttpTestingController);
   });
 
@@ -22,8 +22,8 @@ describe('BaseService', () => {
     expect(service).toBeTruthy();
   });
 
-  describe('#post', () => {
-    describe('Given a valid request payload', () => {
+  describe('#login', () => {
+    describe('Given valid email and password', () => {
       it('returns an Observable<any>', () => {
         const mockResponse = {
           data: {
@@ -48,15 +48,7 @@ describe('BaseService', () => {
           createdAt: 1597169495
         };
 
-        const postRequestPayload = {
-          grant_type: 'password',
-          email: 'dev@nimblehq.co',
-          password: '12345678',
-          client_id: environment.apiClientID,
-          client_secret: environment.apiClientSecret
-        };
-
-        service.post('oauth/token', postRequestPayload).subscribe(response => {
+        service.login('dev@nimblehq.co', '12345678').subscribe(response => {
           expect(response).toEqual(deserializedResponse);
         });
 
@@ -66,7 +58,7 @@ describe('BaseService', () => {
       });
     });
 
-    describe('Given an INVALID request payload', () => {
+    describe('Given INVALID email and password', () => {
       it('throws an error', () => {
         const mockErrorResponse = {
           errors: [
@@ -78,16 +70,8 @@ describe('BaseService', () => {
           ]
         };
 
-        const postRequestPayload = {
-          grant_type: 'password',
-          email: 'invalid_email@nimblehq.co',
-          password: '12345678',
-          client_id: environment.apiClientID,
-          client_secret: environment.apiClientSecret
-        };
-
-        service.post('oauth/token', postRequestPayload).subscribe(
-          _ => fail('Should have failed with 400 error'),
+        service.login('invalid_email@nimblehq.co', 'invalid_password').subscribe(
+          _ => fail('It should have failed with 400 error'),
           (error: HttpErrorResponse) => {
             expect(error.status).toBe(400);
             expect(error.message).toContain('400');

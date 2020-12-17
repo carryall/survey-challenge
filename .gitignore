@@ -47,3 +47,6 @@ Thumbs.db
 
 # Environment variable
 .env
+
+# VS code
+.vscode/

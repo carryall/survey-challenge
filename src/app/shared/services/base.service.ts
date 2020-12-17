@@ -1,19 +1,19 @@
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
-import { environment } from '../../../environments/environment';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { catchError, retry } from 'rxjs/operators';
+import { environment } from '@environment/environment';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { catchError } from 'rxjs/operators';
 import { map } from 'rxjs/operators';
 import { Deserializer } from 'ts-jsonapi';
 
 @Injectable({
   providedIn: 'root'
 })
-
 export abstract class BaseService {
-  DEFAULT_HEADER: object = {
+  DEFAULT_HEADER: { [key: string]: string; } = {
     'Content-Type': 'application/json'
   };
+  GENERIC_ERROR = 'Something went wrong, please try again later';
 
   deserializer: Deserializer;
 
@@ -25,8 +25,11 @@ export abstract class BaseService {
 
   post(endpoint: string, payload: {}): Observable<any> {
     const apiUrl = this.apiUrlFor(endpoint);
+    const requestOptions = {
+      headers: new HttpHeaders(this.DEFAULT_HEADER)
+    };
 
-    return this.http.post(apiUrl, payload).pipe(
+    return this.http.post(apiUrl, payload, requestOptions).pipe(
       catchError(this.handleError),
       map(response => this.deserialize(response)));
   }
@@ -38,10 +41,12 @@ export abstract class BaseService {
       errorMessage = error.error.message;
     } else {
       // Get server-side error
-      errorMessage = error.statusText;
+      errorMessage = error.error.errors[0].detail;
 
       // TODO: redirect to login page if error status is 401
     }
+
+    errorMessage ||=  this.GENERIC_ERROR;
 
     const httpError = new HttpErrorResponse({
       error: errorMessage,
