@@ -13,6 +13,7 @@ export abstract class BaseService {
   DEFAULT_HEADER: { [key: string]: string; } = {
     'Content-Type': 'application/json'
   };
+  GENERIC_ERROR = 'Something went wrong, please try again later';
 
   deserializer: Deserializer;
 
@@ -40,10 +41,12 @@ export abstract class BaseService {
       errorMessage = error.error.message;
     } else {
       // Get server-side error
-      errorMessage = error.statusText;
+      errorMessage = error.error.errors[0].detail;
 
       // TODO: redirect to login page if error status is 401
     }
+
+    errorMessage ||=  this.GENERIC_ERROR;
 
     const httpError = new HttpErrorResponse({
       error: errorMessage,

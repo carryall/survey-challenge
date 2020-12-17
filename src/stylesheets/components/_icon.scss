@@ -6,6 +6,11 @@
 
   fill: transparent;
 
+  svg {
+    width: rem(24px);
+    height: rem(24px);
+  }
+
   &--sm {
     width: rem(28px);
     height: rem(28px);

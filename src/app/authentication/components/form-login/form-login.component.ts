@@ -10,10 +10,6 @@ import { SessionService } from '@service/session.service';
   styleUrls: ['./form-login.component.scss']
 })
 export class FormLoginComponent implements OnInit {
-  ERROR_MESSAGES: { [key: number]: string; } = {
-    400: 'Invalid email or password'
-  };
-
   loginForm: any;
   errorMessage = '';
 
@@ -44,15 +40,8 @@ export class FormLoginComponent implements OnInit {
         this.router.navigate(['/']);
       },
       error => {
-        this.errorMessage = this.errorMessageFor(error.status);
+        this.errorMessage = error.error;
       }
     );
-  }
-
-  private errorMessageFor(status: any): any {
-    if (!Object.keys(this.ERROR_MESSAGES).includes(status.toString())) {
-      return 'Something went wrong, please try again later';
-    }
-    return this.ERROR_MESSAGES[status];
   }
 }
