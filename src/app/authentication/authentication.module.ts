@@ -6,6 +6,7 @@ import { AuthenticationRoutingModule } from './authentication-routing.module';
 import { LoginComponent } from './pages';
 import { FormLoginComponent } from './components/form-login/form-login.component';
 import { AuthenticationService } from './services/authentication.service';
+import { AlertComponent } from 'app/shared/components/alert/alert.component';
 
 @NgModule({
   imports: [
@@ -14,6 +15,7 @@ import { AuthenticationService } from './services/authentication.service';
     AuthenticationRoutingModule
   ],
   declarations: [
+    AlertComponent,
     LoginComponent,
     FormLoginComponent
   ],
