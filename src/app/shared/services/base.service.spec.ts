@@ -90,17 +90,14 @@ describe('BaseService', () => {
           _ => fail('Should have failed with 400 error'),
           (error: HttpErrorResponse) => {
             expect(error.status).toBe(400);
-            expect(error.message).toContain('400');
+            expect(error.error).toEqual(mockErrorResponse.errors[0].detail);
           }
         );
 
         const request = httpMock.expectOne(`${environment.apiBaseUrl}/api/${environment.apiVersion}/oauth/token`);
         expect(request.request.method).toBe('POST');
 
-        const mockError = new ErrorEvent('HttpError', {
-          error: mockErrorResponse
-        });
-        request.error(mockError, {status: 400, statusText: 'Bad Request'});
+        request.flush(mockErrorResponse, {status: 400, statusText: 'Bad Request'});
       });
     });
   });
