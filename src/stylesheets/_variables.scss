@@ -9,7 +9,8 @@ $brand-gray: (
   700: hsl(227, 8%, 33%),       // #4d505b
   800: hsl(230, 9%, 25%),       // #3b3d47
   900: hsl(234, 11%, 18%),      // #292a33
-  backgound: hsl(240, 11%, 9%)  // #15151a
+  dark: hsl(0, 0%, 15%),        // #252525
+  darkest: hsl(240, 11%, 9%)    // #15151a
 );
 
 $brand-red: (
@@ -49,6 +50,14 @@ $gray: map-get($brand-gray, 500);
 
 $primary: $white;
 $secondary: $gray;
+$dark: map-get($brand-gray, 'dark');
+
+$theme-colors: map-merge((),
+(
+  'primary': $primary,
+  'secondary': $secondary,
+  'dark': $dark
+));
 
 $link-color: map-get($brand-blue, 'light');
 
@@ -94,5 +103,13 @@ $btn-padding-x: 5rem;         // 80px
 $btn-font-weight: $font-weight-bold;
 
 // Body
-$body-bg: map-get($grays, 'background');
+$body-bg: map-get($grays, 'darkest');
 $body-color: $white;
+
+// Alert
+$alert-margin-bottom: 0;
+$alert-padding-y: 1rem;     // 16px
+$alert-padding-x: 1rem;     // 16px
+
+$alert-border-width: 0;
+$alert-bg-level: 0;
