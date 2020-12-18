@@ -89,6 +89,45 @@ describe('AuthenticationService', () => {
     });
   });
 
+  describe('#requestPasswordReset', () => {
+    describe('Given valid email', () => {
+      it('returns an Observable<any>', () => {
+        const mockResponse = {
+          meta: {
+            message: 'If your email address exists in our database, you will receive a password recovery link at your email address in a few minutes.'
+          }
+        };
+
+        service.requestPasswordReset('dev@nimblehq.co').subscribe(response => {
+          expect(response).toEqual(mockResponse);
+        });
+
+        const request = httpMock.expectOne(`${environment.apiBaseUrl}/api/${environment.apiVersion}/password`);
+        expect(request.request.method).toBe('POST');
+        request.flush(mockResponse);
+      });
+    });
+
+    describe('Given INVALID email', () => {
+      // TODO: update this when the API validate the email format
+      it('returns an Observable<any>', () => {
+        const mockResponse = {
+          meta: {
+            message: 'If your email address exists in our database, you will receive a password recovery link at your email address in a few minutes.'
+          }
+        };
+
+        service.requestPasswordReset('invalid email').subscribe(response => {
+          expect(response).toEqual(mockResponse);
+        });
+
+        const request = httpMock.expectOne(`${environment.apiBaseUrl}/api/${environment.apiVersion}/password`);
+        expect(request.request.method).toBe('POST');
+        request.flush(mockResponse);
+      });
+    });
+  });
+
   afterEach(() => {
     httpMock.verify();
   });

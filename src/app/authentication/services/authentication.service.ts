@@ -7,16 +7,30 @@ import { environment } from '@environment/environment';
   providedIn: 'root'
 })
 export class AuthenticationService extends BaseService {
+  DEFAULT_PAYLOAD = {
+    client_id: environment.apiClientID,
+    client_secret: environment.apiClientSecret
+  };
 
   login(email: string, password: string): Observable<any> {
     const data = {
       grant_type: 'password',
       email,
       password,
-      client_id: environment.apiClientID,
-      client_secret: environment.apiClientSecret
+      ...this.DEFAULT_PAYLOAD
     };
 
     return this.post('oauth/token', data);
+  }
+
+  requestPasswordReset(email: string): Observable<any> {
+    const data = {
+      user: {
+        email
+      },
+      ...this.DEFAULT_PAYLOAD
+    };
+
+    return this.post('password', data);
   }
 }
