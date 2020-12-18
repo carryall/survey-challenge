@@ -2,14 +2,15 @@
   <app-alert [message]="errorMessage"></app-alert>
 </div>
 
-<form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="form-login">
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="form">
   <div class="form-group">
-    <label for="email" class="form-login__label">Email</label>
+    <label for="email" class="form__label">Email</label>
     <input formControlName="email" required name="email" id="email" type="email" class="form-control">
   </div>
   <div class="form-group">
-    <label for="password" class="form-login__label">Password</label>
+    <label for="password" class="form__label">Password</label>
     <input formControlName="password" required name="password" id="password" type="password" class="form-control">
+    <a [routerLink]="['forget-password']">Forgot password ?</a>
   </div>
   <button [disabled]="!loginForm.valid" class="btn btn-primary btn-block" type="submit">Sign in</button>
 </form>
