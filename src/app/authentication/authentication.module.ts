@@ -9,6 +9,9 @@ import { AlertComponent } from 'app/shared/components/alert/alert.component';
 import { FormForgotPasswordComponent, FormLoginComponent } from './components';
 import { ForgotPasswordComponent, LoginComponent } from './pages';
 
+// Layouts
+import { DefaultComponent } from './layouts/default/default.component';
+
 // Services
 import { AuthenticationService } from './services/authentication.service';
 
@@ -21,6 +24,9 @@ import { AuthenticationService } from './services/authentication.service';
   declarations: [
     // Shared
     AlertComponent,
+
+    // Layouts
+    DefaultComponent,
 
     // Pages
     ForgotPasswordComponent,
