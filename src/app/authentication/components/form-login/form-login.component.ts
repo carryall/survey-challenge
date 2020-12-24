@@ -18,10 +18,6 @@ export class FormLoginComponent implements OnInit {
     private sessionService: SessionService,
     private router: Router
   ) {
-    if (sessionService.isLoggedIn()) {
-      router.navigate(['/']);
-    }
-
     this.loginForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required])
