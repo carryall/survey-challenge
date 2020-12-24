@@ -10,9 +10,9 @@ describe('FormLoginComponent', () => {
   let baseElement: any;
 
   const SELECTORS = {
-    emailField: '.form-login input[type="email"]',
-    passwordField: '.form-login input[type="password"]',
-    submitButton: '.form-login button[type="submit"]'
+    emailField: '.form input[type="email"]',
+    passwordField: '.form input[type="password"]',
+    submitButton: '.form button[type="submit"]'
   };
 
   beforeEach(async () => {

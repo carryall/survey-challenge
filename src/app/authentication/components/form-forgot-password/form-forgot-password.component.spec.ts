@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FormForgotPasswordComponent } from './form-forgot-password.component';
@@ -5,10 +6,20 @@ import { FormForgotPasswordComponent } from './form-forgot-password.component';
 describe('FormForgotPasswordComponent', () => {
   let component: FormForgotPasswordComponent;
   let fixture: ComponentFixture<FormForgotPasswordComponent>;
+  let baseElement: any;
+
+  const SELECTORS = {
+    emailField: '.form input[type="email"]',
+    passwordField: '.form input[type="password"]',
+    submitButton: '.form button[type="submit"]'
+  };
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FormForgotPasswordComponent ]
+      declarations: [ FormForgotPasswordComponent ],
+      imports: [
+        HttpClientModule
+      ]
     })
     .compileComponents();
   });
@@ -16,6 +27,7 @@ describe('FormForgotPasswordComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(FormForgotPasswordComponent);
     component = fixture.componentInstance;
+    baseElement = fixture.nativeElement;
     fixture.detectChanges();
   });
 

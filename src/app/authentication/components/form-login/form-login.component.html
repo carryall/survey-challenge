@@ -10,7 +10,7 @@
   <div class="form-group">
     <label for="password" class="form__label">Password</label>
     <input formControlName="password" required name="password" id="password" type="password" class="form-control">
-    <a [routerLink]="['forget-password']">Forgot password ?</a>
+    <a [routerLink]="['auth','forget-password']">Forgot password ?</a>
   </div>
   <button [disabled]="!loginForm.valid" class="btn btn-primary btn-block" type="submit">Sign in</button>
 </form>
