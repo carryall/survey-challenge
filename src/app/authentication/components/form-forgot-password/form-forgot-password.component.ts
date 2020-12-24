@@ -8,15 +8,16 @@ import { AuthenticationService } from 'app/authentication/services/authenticatio
   styleUrls: ['./form-forgot-password.component.scss']
 })
 export class FormForgotPasswordComponent implements OnInit {
-  forgotPasswordForm: any;
+  forgotPasswordForm: FormGroup;
   alertMessage = '';
 
-  constructor(private authenticationService: AuthenticationService) { }
-
-  ngOnInit(): void {
+  constructor(private authenticationService: AuthenticationService) {
     this.forgotPasswordForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email])
     });
+  }
+
+  ngOnInit(): void {
   }
 
   onSubmit(): void {

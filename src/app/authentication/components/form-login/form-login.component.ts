@@ -10,7 +10,7 @@ import { SessionService } from '@service/session.service';
   styleUrls: ['./form-login.component.scss']
 })
 export class FormLoginComponent implements OnInit {
-  loginForm: any;
+  loginForm: FormGroup;
   errorMessage = '';
 
   constructor(
@@ -21,13 +21,14 @@ export class FormLoginComponent implements OnInit {
     if (sessionService.isLoggedIn()) {
       router.navigate(['/']);
     }
-  }
 
-  ngOnInit(): void {
     this.loginForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required])
     });
+  }
+
+  ngOnInit(): void {
   }
 
   onSubmit(): void {
