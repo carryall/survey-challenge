@@ -1,3 +1,6 @@
+@import 'functions/sizing';
+@import 'variables';
+
 .alert {
   display: flex;
   margin-top: rem(24px);

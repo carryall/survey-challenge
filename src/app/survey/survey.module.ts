@@ -12,5 +12,4 @@ import { SurveyListComponent } from './pages';
   providers: [],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-
 export class SurveyModule { }

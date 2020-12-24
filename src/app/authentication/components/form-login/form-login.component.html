@@ -1,15 +1,5 @@
 <div *ngIf="errorMessage != ''">
-  <div class="alert alert--dark">
-    <svg-icon src="assets/images/icon-sprite.svg#error" class="icon alert__icon"></svg-icon>
-    <div class="alert__detail">
-      <h6 class="alert__heading">
-        Error
-      </h6>
-      <span class="alert__message">
-        {{ errorMessage }}
-      </span>
-    </div>
-  </div>
+  <app-alert [message]="errorMessage"></app-alert>
 </div>
 
 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="form-login">

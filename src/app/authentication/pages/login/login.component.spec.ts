@@ -8,8 +8,8 @@ describe('LoginComponent', () => {
   let baseElement: any;
 
   const SELECTORS = {
-    headerLogo: '.header__logo',
-    headerTitle: '.header__subtitle'
+    headerLogo: '.app-header__logo',
+    headerTitle: '.app-header__subtitle'
   };
 
   beforeEach(async () => {
