@@ -26,7 +26,7 @@ describe('Login', () => {
       }).then(() => {
         browser.wait(() => {
           return until.elementTextIs(page.getAlertTitle(), 'Check your email.') &&
-            until.elementTextIs(page.getAlertMessage(), 
+            until.elementTextIs(page.getAlertMessage(),
                                 'If your email address exists in our database, you will receive a password recovery link at your email address in a few minutes.');
         });
       });
@@ -61,7 +61,7 @@ describe('Login', () => {
       }).then(() => {
         browser.wait(() => {
           return until.elementTextIs(page.getAlertTitle(), 'Check your email.') &&
-            until.elementTextIs(page.getAlertMessage(), 
+            until.elementTextIs(page.getAlertMessage(),
                                 'If your email address exists in our database, you will receive a password recovery link at your email address in a few minutes.');
         });
       });
