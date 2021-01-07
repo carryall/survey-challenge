@@ -14,7 +14,7 @@ describe('GuestGuard', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    
+
     TestBed.configureTestingModule({
       imports: [RouterTestingModule]
     });

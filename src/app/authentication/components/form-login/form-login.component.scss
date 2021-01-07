@@ -1,0 +1,16 @@
+@import 'functions/sizing';
+@import 'variables';
+
+.form {
+  .form-group:last-of-type .form-control {
+    display: inline;
+    padding-right: rem(80px);
+  }
+
+  &__link {
+    margin-left: rem(-70px);
+
+    color: map-get($brand-gray, 500);
+    font-size: $font-size-sm;
+  }
+}

@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AuthenticationModule } from './authentication/authentication.module';
 import { SurveyModule } from './survey/survey.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { SurveyModule } from './survey/survey.module';
     BrowserModule,
     NgbModule,
     HttpClientModule,
+    RouterModule,
 
     AuthenticationModule,
     SurveyModule,
