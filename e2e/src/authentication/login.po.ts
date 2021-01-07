@@ -28,11 +28,11 @@ export class LoginPage extends AppPage {
     return element(by.buttonText('Sign in')).getWebElement();
   }
 
-  getAlert(): WebElement {
-    return element(by.className('alert__message')).getWebElement();
+  getAlertTitle(): WebElement {
+    return element(by.className('alert__heading')).getWebElement();
   }
 
-  async getErrorMessage(): Promise<string> {
-    return element(by.className('alert__message')).getText();
+  getAlertMessage(): WebElement {
+    return element(by.className('alert__message')).getWebElement();
   }
 }

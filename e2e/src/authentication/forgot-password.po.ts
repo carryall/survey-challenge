@@ -6,7 +6,7 @@ export class ForgotPasswordPage extends AppPage {
     return browser.get('/auth/forgot-password');
   }
 
-  async ResetPasswordWith(email: string): Promise<void> {
+  async ResetPasswordFor(email: string): Promise<void> {
     this.fillEmail(email);
     this.submitForgotPasswordForm();
   }
@@ -23,11 +23,11 @@ export class ForgotPasswordPage extends AppPage {
     return element(by.buttonText('Send Recovery Email')).getWebElement();
   }
 
-  getAlert(): WebElement {
-    return element(by.className('alert__message')).getWebElement();
+  getAlertTitle(): WebElement {
+    return element(by.className('alert__heading')).getWebElement();
   }
 
-  async getErrorMessage(): Promise<string> {
-    return element(by.className('alert__message')).getText();
+  getAlertMessage(): WebElement {
+    return element(by.className('alert__message')).getWebElement();
   }
 }

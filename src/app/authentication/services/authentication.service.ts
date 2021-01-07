@@ -31,6 +31,6 @@ export class AuthenticationService extends BaseService {
       ...this.DEFAULT_PAYLOAD
     };
 
-    return this.post('password', data);
+    return this.post('passwords', data);
   }
 }
