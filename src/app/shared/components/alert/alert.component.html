@@ -1,5 +1,5 @@
 <div class="alert alert--dark">
-  <svg-icon src="assets/images/icon-sprite.svg#error" class="icon alert__icon"></svg-icon>
+  <svg-icon [attr.src]="'assets/images/icon-sprite.svg#'+alertType" class="icon alert__icon"></svg-icon>
   <div class="alert__detail">
     <h6 class="alert__heading">
       Error
