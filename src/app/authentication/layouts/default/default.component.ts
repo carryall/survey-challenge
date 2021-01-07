@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-default',
@@ -8,10 +8,12 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class DefaultComponent implements OnInit {
   pageDescription = '';
+  displayBackButton = false;
 
   constructor(private activatedRoute: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.pageDescription = this.activatedRoute.firstChild?.snapshot.data.title;
+    this.displayBackButton = this.activatedRoute.firstChild?.snapshot.data.displayBackButton;
   }
 }
