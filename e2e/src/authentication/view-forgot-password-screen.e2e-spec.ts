@@ -16,6 +16,17 @@ describe('View forgot password screen', () => {
         return until.urlIs('/auth/forgot-password');
       });
     });
+
+    describe('Given user click on back button', () => {
+      it('redirects to login screen', async () => {
+        await page.navigateTo();
+
+        page.getBackButton().click();
+        browser.wait(() => {
+          return until.urlIs('/auth/login');
+        });
+      });
+    });
   });
 
   describe('Given already logged in user', () => {

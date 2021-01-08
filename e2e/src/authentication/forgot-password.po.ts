@@ -30,4 +30,8 @@ export class ForgotPasswordPage extends AppPage {
   getAlertMessage(): WebElement {
     return element(by.className('alert__message')).getWebElement();
   }
+
+  getBackButton(): WebElement {
+    return element(by.className('app-navigation__link')).getWebElement();
+  }
 }

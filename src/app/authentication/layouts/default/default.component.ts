@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+
+import { ForgotPasswordComponent } from 'app/authentication/pages';
 
 @Component({
   selector: 'app-default',
@@ -15,5 +17,9 @@ export class DefaultComponent implements OnInit {
   ngOnInit(): void {
     this.pageDescription = this.activatedRoute.firstChild?.snapshot.data.title;
     this.displayBackButton = this.activatedRoute.firstChild?.snapshot.data.displayBackButton;
+  }
+
+  onActivate(event: EventEmitter<any>): void {
+    this.displayBackButton = event instanceof ForgotPasswordComponent;
   }
 }

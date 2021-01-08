@@ -35,4 +35,8 @@ export class LoginPage extends AppPage {
   getAlertMessage(): WebElement {
     return element(by.className('alert__message')).getWebElement();
   }
-}
+
+  getForgotPasswordLink(): WebElement {
+    return element(by.linkText('Forgot?')).getWebElement();
+  }
+ }
