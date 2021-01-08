@@ -18,18 +18,11 @@ const routes: Routes = [
       },
       {
         path: 'login',
-        component: LoginComponent,
-        data: {
-          title: 'Sign in to Nimble'
-        }
+        component: LoginComponent
       },
       {
         path: 'forgot-password',
-        component: ForgotPasswordComponent,
-        data: {
-          displayBackButton: true,
-          title: 'Enter your email to receive instructions for resetting your password.'
-        }
+        component: ForgotPasswordComponent
       }
     ]
   }
