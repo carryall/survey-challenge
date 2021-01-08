@@ -1,24 +1,36 @@
+@import '~bootstrap/scss/bootstrap';
 @import 'functions/sizing';
 @import 'variables';
 
 .content-wrapper {
   display: flex;
   height: 100vh;
-  padding: 0;
   flex-direction: column;
   justify-content: center;
 
   background-image: url('/assets/images/background.png');
   background-position: center;
   background-size: cover;
+
+  @include media-breakpoint-up(md) {
+    padding: 0;
+  }
 }
 
 .app-navigation {
   position: absolute;
   top: 0;
-  margin: rem(32px 0 0 32px);
+  margin-top: rem(15px);
+
+  @include media-breakpoint-up(md) {
+    margin: rem(32px 0 0 32px);
+  }
 
   &__link {
     color: $white;
+
+    &:hover {
+      color: map-get($brand-gray, 700);
+    }
   }
 }

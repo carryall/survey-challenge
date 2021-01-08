@@ -13,8 +13,6 @@ describe('GuestGuard', () => {
   const routeStateMock: any = { snapshot: {}, url: '/'};
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
-
     TestBed.configureTestingModule({
       imports: [RouterTestingModule]
     });
