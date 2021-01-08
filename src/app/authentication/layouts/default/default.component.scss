@@ -4,14 +4,13 @@
 .content-wrapper {
   display: flex;
   height: 100vh;
+  padding: 0;
   flex-direction: column;
   justify-content: center;
 
   background-image: url('/assets/images/background.png');
   background-position: center;
   background-size: cover;
-
-  padding: 0;
 }
 
 .app-navigation {
@@ -20,6 +19,6 @@
   margin: rem(32px 0 0 32px);
 
   &__link {
-    color: $white
+    color: $white;
   }
 }
