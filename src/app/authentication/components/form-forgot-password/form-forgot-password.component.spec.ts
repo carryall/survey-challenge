@@ -10,7 +10,6 @@ describe('FormForgotPasswordComponent', () => {
 
   const SELECTORS = {
     emailField: '.form input[type="email"]',
-    passwordField: '.form input[type="password"]',
     submitButton: '.form button[type="submit"]'
   };
 
@@ -33,5 +32,10 @@ describe('FormForgotPasswordComponent', () => {
 
   it('creates the component', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('renders login form', () => {
+    expect(baseElement.querySelector(SELECTORS.emailField)).toBeTruthy();
+    expect(baseElement.querySelector(SELECTORS.submitButton)).toBeTruthy();
   });
 });
