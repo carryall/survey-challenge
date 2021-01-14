@@ -14,9 +14,9 @@ export class FormLoginComponent implements OnInit {
   errorMessage = '';
 
   constructor(
-    private authenticationService: AuthenticationService,
-    private sessionService: SessionService,
-    private router: Router
+    private _authenticationService: AuthenticationService,
+    private _sessionService: SessionService,
+    private _router: Router
   ) {
     this.loginForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
@@ -30,11 +30,11 @@ export class FormLoginComponent implements OnInit {
   onSubmit(): void {
     this.errorMessage = '';
 
-    this.authenticationService.login(this.loginForm.value.email, this.loginForm.value.password).subscribe(
+    this._authenticationService.login(this.loginForm.value.email, this.loginForm.value.password).subscribe(
       response => {
-        this.sessionService.setAccessToken(response.accessToken, response.tokenType);
+        this._sessionService.setAccessToken(response.accessToken, response.tokenType);
 
-        this.router.navigate(['/']);
+        this._router.navigate(['/']);
       },
       error => {
         this.errorMessage = error.error;

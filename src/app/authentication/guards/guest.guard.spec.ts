@@ -9,9 +9,6 @@ describe('GuestGuard', () => {
   let guard: GuestGuard;
   let sessionService: SessionService;
 
-  const routeMock: any = { snapshot: {}};
-  const routeStateMock: any = { snapshot: {}, url: '/'};
-
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [RouterTestingModule]
@@ -29,7 +26,7 @@ describe('GuestGuard', () => {
       it('returns true', () => {
         spyOn(sessionService, 'isLoggedIn').and.returnValue(false);
 
-        expect(guard.canActivate(routeMock, routeStateMock)).toBeTruthy();
+        expect(guard.canActivate()).toBeTruthy();
       });
     });
 
@@ -37,7 +34,7 @@ describe('GuestGuard', () => {
       it('returns an url tree', () => {
         spyOn(sessionService, 'isLoggedIn').and.returnValue(true);
 
-        expect(guard.canActivate(routeMock, routeStateMock)).toBeInstanceOf(UrlTree);
+        expect(guard.canActivate()).toBeInstanceOf(UrlTree);
       });
     });
   });

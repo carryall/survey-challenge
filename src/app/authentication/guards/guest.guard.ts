@@ -8,18 +8,14 @@ import { SessionService } from '@service/session.service';
 })
 export class GuestGuard implements CanActivate {
   constructor(
-    private sessionService: SessionService,
-    private router: Router) {}
+    private _sessionService: SessionService,
+    private _router: Router
+  ) {}
 
-  canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-
-    if (!this.sessionService.isLoggedIn()) {
+  canActivate(): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    if (!this._sessionService.isLoggedIn()) {
       return true;
     }
-
-    return this.router.parseUrl('/');
+    return this._router.parseUrl('/');
   }
-
 }
