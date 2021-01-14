@@ -1,33 +1,39 @@
-import { LoginPage } from './login.po';
+import { ForgotPasswordPage } from './forgot-password.po';
 import { browser, logging, until } from 'protractor';
 
 describe('Login', () => {
-  let page: LoginPage;
+  let page: ForgotPasswordPage;
 
   beforeEach(() => {
-    page = new LoginPage();
+    page = new ForgotPasswordPage();
   });
 
   describe('Given valid credentials', () => {
     it('enables the form submit button', async () => {
       await page.navigateTo();
       await page.fillEmail('email@nimblehq.co');
-      await page.fillPassword('password');
 
       expect(await page.getSubmitButton().getAttribute('disabled')).toBeFalsy();
     });
 
-    it('redirects to the root url upon logging in', async () => {
+    it('displays the alert', async () => {
       await page.navigateTo();
-      await page.LoginWith('dev@nimblehq.co', '12345678');
+      await page.ResetPasswordFor('dev@nimblehq.co');
 
       browser.wait(() => {
-        return until.urlIs('/');
+        return until.elementIsVisible(page.getAlertTitle()) &&
+          until.elementIsVisible(page.getAlertMessage());
+      }).then(() => {
+        browser.wait(() => {
+          return until.elementTextIs(page.getAlertTitle(), 'Check your email.') &&
+            until.elementTextIs(page.getAlertMessage(),
+                                'If your email address exists in our database, you will receive a password recovery link at your email address in a few minutes.');
+        });
       });
     });
   });
 
-  describe('Given email and password are blank', () => {
+  describe('Given email is blank', () => {
     it('disables the form submit button', async () => {
       await page.navigateTo();
 
@@ -39,23 +45,24 @@ describe('Login', () => {
     it('disables the form submit button', async () => {
       await page.navigateTo();
       await page.fillEmail('email with wrong format');
-      await page.fillPassword('password');
 
       expect(await page.getSubmitButton().getAttribute('disabled')).toBeTruthy();
     });
   });
 
   describe('Given INVALID credentials', () => {
-    it('displays the error message', async () => {
+    it('displays the alert message', async () => {
       await page.navigateTo();
-      await page.LoginWith('invalid-email@nimblehq.co', '12345678');
+      await page.ResetPasswordFor('invalid-email@nimblehq.co');
 
       browser.wait(() => {
-        return until.elementIsVisible(page.getAlertTitle()) && until.elementIsVisible(page.getAlertMessage());
+        return until.elementIsVisible(page.getAlertTitle()) &&
+          until.elementIsVisible(page.getAlertMessage());
       }).then(() => {
         browser.wait(() => {
-          return until.elementTextIs(page.getAlertTitle(), 'Error') &&
-            until.elementTextIs(page.getAlertMessage(), 'Invalid email or password');
+          return until.elementTextIs(page.getAlertTitle(), 'Check your email.') &&
+            until.elementTextIs(page.getAlertMessage(),
+                                'If your email address exists in our database, you will receive a password recovery link at your email address in a few minutes.');
         });
       });
     });

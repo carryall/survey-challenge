@@ -1,33 +1,30 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientModule } from '@angular/common/http';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FormLoginComponent } from './form-login.component';
-import { RouterTestingModule } from '@angular/router/testing';
+import { FormForgotPasswordComponent } from './form-forgot-password.component';
 
-describe('FormLoginComponent', () => {
-  let component: FormLoginComponent;
-  let fixture: ComponentFixture<FormLoginComponent>;
+describe('FormForgotPasswordComponent', () => {
+  let component: FormForgotPasswordComponent;
+  let fixture: ComponentFixture<FormForgotPasswordComponent>;
   let baseElement: any;
 
   const SELECTORS = {
     emailField: '.form input[type="email"]',
-    passwordField: '.form input[type="password"]',
     submitButton: '.form button[type="submit"]'
   };
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FormLoginComponent ],
+      declarations: [ FormForgotPasswordComponent ],
       imports: [
-        HttpClientModule,
-        RouterTestingModule.withRoutes([])
+        HttpClientModule
       ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FormLoginComponent);
+    fixture = TestBed.createComponent(FormForgotPasswordComponent);
     component = fixture.componentInstance;
     baseElement = fixture.nativeElement;
     fixture.detectChanges();
@@ -39,7 +36,6 @@ describe('FormLoginComponent', () => {
 
   it('renders login form', () => {
     expect(baseElement.querySelector(SELECTORS.emailField)).toBeTruthy();
-    expect(baseElement.querySelector(SELECTORS.passwordField)).toBeTruthy();
     expect(baseElement.querySelector(SELECTORS.submitButton)).toBeTruthy();
   });
 });

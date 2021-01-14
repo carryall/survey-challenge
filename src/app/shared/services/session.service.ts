@@ -8,7 +8,7 @@ export class SessionService {
   USER_ACCESS_TOKEN = 'user_access_token';
   USER_TOKEN_TYPE = 'user_token_type';
 
-  constructor(private router: Router) { }
+  constructor() { }
 
   setAccessToken(accessToken: string, tokenType: string): void {
     localStorage.setItem(this.USER_ACCESS_TOKEN, accessToken);

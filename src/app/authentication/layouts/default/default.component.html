@@ -1,0 +1,20 @@
+<div class="container-fluid content-wrapper">
+  <div *ngIf="displayBackButton" class="row no-gutters app-navigation">
+    <a [routerLink]="['/','auth', 'login']" class="app-navigation__link">
+      <svg-icon src="assets/images/icon-sprite.svg#arrow-left" class="icon" viewBox="0 0 30 30"></svg-icon>
+    </a>
+  </div>
+
+  <div class="row no-gutters app-header">
+    <div class="col col-lg-3 col-md-6 col-sm-12 mx-auto text-center">
+      <img src="assets/images/logo.svg" class="app-header__logo"/>
+      <p class="app-header__page-desc">{{ pageDescription }}</p>
+    </div>
+  </div>
+
+  <div class="row no-gutters">
+    <div class="col col-lg-3 col-md-6 col-sm-12 mx-auto">
+      <router-outlet (activate)='onActivate($event)'></router-outlet>
+    </div>
+  </div>
+</div>

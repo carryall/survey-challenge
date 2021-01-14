@@ -6,20 +6,16 @@ import { SessionService } from '@service/session.service';
 @Injectable({
   providedIn: 'root'
 })
-export class CurrentUserGuard implements CanActivate {
+export class GuestGuard implements CanActivate {
   constructor(
     private _sessionService: SessionService,
     private _router: Router
   ) {}
 
-  canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-
-    if (this._sessionService.isLoggedIn()) {
+  canActivate(): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    if (!this._sessionService.isLoggedIn()) {
       return true;
     }
-
-    return this._router.parseUrl('/auth/login');
+    return this._router.parseUrl('/');
   }
 }

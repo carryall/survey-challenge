@@ -17,7 +17,7 @@ export abstract class BaseService {
 
   deserializer: Deserializer;
 
-  constructor(private http: HttpClient) {
+  constructor(private _http: HttpClient) {
     this.deserializer = new Deserializer({
       keyForAttribute: 'camelCase'
     });
@@ -29,7 +29,7 @@ export abstract class BaseService {
       headers: new HttpHeaders(this.DEFAULT_HEADER)
     };
 
-    return this.http.post(apiUrl, payload, requestOptions).pipe(
+    return this._http.post(apiUrl, payload, requestOptions).pipe(
       catchError(this.handleError),
       map(response => this.deserialize(response)));
   }

@@ -3,7 +3,7 @@ import { AppPage } from '../app.po';
 
 export class LoginPage extends AppPage {
   async navigateTo(): Promise<unknown> {
-    return browser.get('/login');
+    return browser.get('/auth/login');
   }
 
   async LoginWith(email: string, password: string): Promise<void> {
@@ -28,11 +28,15 @@ export class LoginPage extends AppPage {
     return element(by.buttonText('Sign in')).getWebElement();
   }
 
-  getAlert(): WebElement {
+  getAlertTitle(): WebElement {
+    return element(by.className('alert__heading')).getWebElement();
+  }
+
+  getAlertMessage(): WebElement {
     return element(by.className('alert__message')).getWebElement();
   }
 
-  async getErrorMessage(): Promise<string> {
-    return element(by.className('alert__message')).getText();
+  getForgotPasswordLink(): WebElement {
+    return element(by.linkText('Forgot?')).getWebElement();
   }
-}
+ }

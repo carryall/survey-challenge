@@ -102,7 +102,7 @@ describe('AuthenticationService', () => {
           expect(response).toEqual(mockResponse);
         });
 
-        const request = httpMock.expectOne(`${environment.apiBaseUrl}/api/${environment.apiVersion}/password`);
+        const request = httpMock.expectOne(`${environment.apiBaseUrl}/api/${environment.apiVersion}/passwords`);
         expect(request.request.method).toBe('POST');
         request.flush(mockResponse);
       });
@@ -121,7 +121,7 @@ describe('AuthenticationService', () => {
           expect(response).toEqual(mockResponse);
         });
 
-        const request = httpMock.expectOne(`${environment.apiBaseUrl}/api/${environment.apiVersion}/password`);
+        const request = httpMock.expectOne(`${environment.apiBaseUrl}/api/${environment.apiVersion}/passwords`);
         expect(request.request.method).toBe('POST');
         request.flush(mockResponse);
       });
