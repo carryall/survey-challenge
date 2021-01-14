@@ -1,6 +1,4 @@
-<div *ngIf="errorMessage != ''">
-  <app-alert [message]="errorMessage"></app-alert>
-</div>
+<app-alert *ngIf="errorMessage" [message]="errorMessage"></app-alert>
 
 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="form">
   <div class="form-group">
