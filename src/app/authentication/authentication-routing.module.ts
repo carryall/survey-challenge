@@ -12,17 +12,16 @@ const routes: Routes = [
     canActivate: [GuestGuard],
     children: [
       {
-        path: '',
-        redirectTo: 'login',
-        pathMatch: 'full'
-      },
-      {
         path: 'login',
         component: LoginComponent
       },
       {
         path: 'forgot-password',
         component: ForgotPasswordComponent
+      },
+      {
+        path: '**',
+        redirectTo: 'login'
       }
     ]
   }
