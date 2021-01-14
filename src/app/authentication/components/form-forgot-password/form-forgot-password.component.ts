@@ -11,7 +11,7 @@ export class FormForgotPasswordComponent implements OnInit {
   forgotPasswordForm: FormGroup;
   alertMessage = '';
 
-  constructor(private authenticationService: AuthenticationService) {
+  constructor(private _authenticationService: AuthenticationService) {
     this.forgotPasswordForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email])
     });
@@ -23,7 +23,7 @@ export class FormForgotPasswordComponent implements OnInit {
   onSubmit(): void {
     this.alertMessage = '';
 
-    this.authenticationService.requestPasswordReset(this.forgotPasswordForm.value.email).subscribe(
+    this._authenticationService.requestPasswordReset(this.forgotPasswordForm.value.email).subscribe(
       response => {
         this.alertMessage = response.meta.message;
       },
